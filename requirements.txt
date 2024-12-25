@@ -1,0 +1,6 @@
+flask
+pillow
+svgwrite
+pycairo
+perlin_noise
+cairosvg

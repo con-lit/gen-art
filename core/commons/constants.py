@@ -1,0 +1,1 @@
+STROKES_PER_CELL = 2

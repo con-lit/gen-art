@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="lines-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect id="c2" x="0" y="0" width="100" height="100" transform="translate(0 100) rotate(-90)" fill="stroke_2" stroke-width="0"/>
+  <rect id="c1" x="12.5" y="-12.5" width="75" height="100" transform="translate(12.5 87.5) rotate(-90)" fill="stroke_1" stroke-width="0"/>
+  <rect id="c0" x="37.5" y="-37.5" width="25" height="100" transform="translate(37.5 62.5) rotate(-90)" fill="stroke_0" stroke-width="0"/>
+  <rect id="c3" x="25" y="0" width="50" height="100" fill="stroke_3" stroke-width="0"/>
+</svg>
