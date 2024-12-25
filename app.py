@@ -7,6 +7,7 @@ from PIL import Image
 import svgwrite
 import cairo
 from cairo import ImageSurface, FORMAT_ARGB32, Context
+from core.commons.constants import SHAPE, TILE_SIZE
 from core.connector import Connector
 from core.pattern import Pattern
 from core.perlin import Perlin
@@ -16,9 +17,6 @@ from core.quadtree import QuadTree
 app = Flask(__name__)
 
 patterns = Pattern()
-
-TILE_SIZE = 42
-MAX_STEPS = 4
 
 def monochrome_color() -> tuple:
     colors = [
@@ -80,24 +78,15 @@ def divide_surface(l, s, m):
     return k
 
 def create_pattern(width:int, hight:int) -> ImageSurface:
-    k_width = divide_surface(width, TILE_SIZE, MAX_STEPS)
-    k_hight = divide_surface(hight, TILE_SIZE, MAX_STEPS)
+    k_width = divide_surface(width, TILE_SIZE, SHAPE)
+    k_hight = divide_surface(hight, TILE_SIZE, SHAPE)
     k_width = 4
     k_hight = 4
 
     quadtree = QuadTree((0, 0, k_width, k_hight),
                         matrix = Perlin(k_width, k_hight, octaves=2, seed=1),
                         connector = Connector(k_width, k_hight))
-    quadtree.connect()
     quadtree.colorize(monochrome_color)
-
-    # quatrees:List[QuadTree] = []
-    # for y in range(0, k_hight, MAX_STEPS):
-    #     for x in range(0, k_width, MAX_STEPS):
-    #         boundary = (x, y, MAX_STEPS)
-    #         quatrees.append(QuadTree(boundary, noise.slice(*boundary), links))
-    # for q in quatrees: q.connect()
-    # for q in quatrees: q.colorize(monochrome_color)
 
     surface = ImageSurface(FORMAT_ARGB32, k_width*TILE_SIZE, k_hight*TILE_SIZE)
     ctx = Context(surface)

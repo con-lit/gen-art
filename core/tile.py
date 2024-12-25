@@ -108,7 +108,11 @@ class Tile:
     def connect(self):
         self._interfaces = {side: [] for side in Side}
         for side in self._interfaces.keys():
-            interface_side = [self._connector.get_connection(self, side, interface_id) for interface_id in range(self._size)]
+            interface_side = [self._connector.get_connection(self._x,
+                                                             self._y,
+                                                             self._size,
+                                                             side, 
+                                                             interface_id) for interface_id in range(self._size)]
             self._interfaces[side] = interface_side
 
         for input_side in self._interfaces.keys():

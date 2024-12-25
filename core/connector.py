@@ -1,4 +1,3 @@
-from core.commons.data_classes import Link
 from core.commons.enums import Side
 
 class Connector:
@@ -13,6 +12,7 @@ class Connector:
   registered_interfaces:int = 0
 
   def register_connections(self, tile, interface_id: int):
+    from core.commons.data_classes import Link
     x = tile.x
     y = tile.y
 
