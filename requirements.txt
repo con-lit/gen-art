@@ -5,3 +5,4 @@ pycairo
 cairosvg
 numpy
 perlin_noise
+pytest

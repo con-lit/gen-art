@@ -10,7 +10,7 @@ from cairo import ImageSurface, FORMAT_ARGB32, Context
 from core.commons.constants import SHAPE, TILE_SIZE
 from core.connector import Connector
 from core.pattern import Pattern
-from core.perlin import Perlin
+from core.fills.perlin import Perlin
 from core.quadtree import QuadTree
 
 
@@ -80,11 +80,9 @@ def divide_surface(l, s, m):
 def create_pattern(width:int, hight:int) -> ImageSurface:
     k_width = divide_surface(width, TILE_SIZE, SHAPE)
     k_hight = divide_surface(hight, TILE_SIZE, SHAPE)
-    k_width = 4
-    k_hight = 4
 
     quadtree = QuadTree((0, 0, k_width, k_hight),
-                        matrix = Perlin(k_width, k_hight, octaves=2, seed=1),
+                        matrix = Perlin(k_width, k_hight, octaves=3),
                         connector = Connector(k_width, k_hight))
     quadtree.colorize(monochrome_color)
 
@@ -100,10 +98,9 @@ def draw(ctx, tile:Tile):
     s = tile.size
     screen_size = s * TILE_SIZE
     svg_data = patterns.get(s, tile.type)
-    print(svg_data)
     for i, stroke in enumerate(tile.strokes):
         hex_color = f'#{stroke.color[0]:02x}{stroke.color[1]:02x}{stroke.color[2]:02x}'
-        svg_data = svg_data.replace(f'stroke_{i}', hex_color)
+        svg_data = svg_data.replace(f'color{i}', hex_color)
     bytes = cairosvg.svg2png(bytestring=svg_data,
                              output_height=screen_size,
                              output_width=screen_size,)  

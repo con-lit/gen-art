@@ -1,5 +1,4 @@
 import uuid
-
 from core.commons.constants import STROKES_PER_CELL
 import random
 import math
@@ -11,17 +10,18 @@ from core.stroke import Stroke
 
 class Tile:
     def __init__(self, x: int, y: int, size: int, connector: Connector):
+        self.strokes = [Stroke() for _ in range(size * STROKES_PER_CELL * 2 + 1)]
+        self.uuid = uuid.uuid4()
         self._x = x
         self._y = y
         self._size = size
         self._connector = connector
-        self._type = random.choice(list(TileType))
+        self._type = TileType.ARKS #random.choice(list(TileType))
         self._rotation_index = random.randint(0, 3)
         self._interfaces = {}
         self._register_links()
         self._side_indexes = self._create_indexes()
-        self.uuid = uuid.uuid4()
-        self.strokes = [Stroke() for _ in range(size * STROKES_PER_CELL * 2 + 1)]
+        self._connect()
 
     @property
     def x(self):
@@ -56,8 +56,17 @@ class Tile:
 
         match self._type:
             case TileType.ARKS:
-                top = [[interface_id * STROKES_PER_CELL + color_id for color_id in range(STROKES_PER_CELL + 1)] for interface_id in range(self._size)]
-                bottom = [[self._size * STROKES_PER_CELL + interface_id * STROKES_PER_CELL + color_id for color_id in range(STROKES_PER_CELL + 1)] for interface_id in range(self._size)]
+                '''
+                top = [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [10, 11, 12, 13, 14], [15, 16, 17, 18, 19], [20, 21, 22, 23, 24]]
+                '''
+                top = [
+                    [interface_id * STROKES_PER_CELL + id for id in range(STROKES_PER_CELL + 1)]
+                        for interface_id in range(self._size)
+                ]
+                bottom = [
+                    [self._size * STROKES_PER_CELL + interface_id * STROKES_PER_CELL + id for id in range(STROKES_PER_CELL + 1)]
+                        for interface_id in range(self._size)
+                ]
                 left = [list(e) for e in top]
                 right = [list(e) for e in bottom]
             case TileType.LINES:
@@ -72,8 +81,17 @@ class Tile:
                 left[0][0] = top_left
                 left[-1][-1] = top_left
                 right[-1][-1] = bottom_right
+            case _:
+                raise ValueError(f"Invalid tile type {self._type}")
 
         match self._rotation_index:
+            case 0:
+                output = {
+                    Side.TOP: top,
+                    Side.RIGHT: right,
+                    Side.BOTTOM: bottom,
+                    Side.LEFT: left,
+                }
             case 1:
                 output = {
                     Side.TOP: self._reverse_interfaces(left),
@@ -95,17 +113,12 @@ class Tile:
                     Side.BOTTOM: left,
                     Side.LEFT: self._reverse_interfaces(top),
                 }
-            case _:
-                output = {
-                    Side.TOP: top,
-                    Side.RIGHT: right,
-                    Side.BOTTOM: bottom,
-                    Side.LEFT: left,
-                }
+            case _: 
+                raise ValueError(f"Invalid rotation index {self._rotation_index}")
 
         return output
 
-    def connect(self):
+    def _connect(self):
         self._interfaces = {side: [] for side in Side}
         for side in self._interfaces.keys():
             interface_side = [self._connector.get_connection(self._x,
@@ -116,7 +129,7 @@ class Tile:
             self._interfaces[side] = interface_side
 
         for input_side in self._interfaces.keys():
-            side_interfaces = self._interfaces[input_side] or []
+            side_interfaces = self._interfaces[input_side]
             for interface_id in range(len(side_interfaces)):
                 for stroke_id in range(STROKES_PER_CELL + 1):
                     index = self._side_indexes[input_side][interface_id][stroke_id]

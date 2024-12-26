@@ -22,21 +22,23 @@ class Connector:
     self.horizontal_connections[y + tile.size][x + interface_id].append(Link(tile, Side.BOTTOM, interface_id))
     self.registered_interfaces += 1
 
-  def get_connection(self, x: int, y: int, size: int, side: Side, id: int):
+  def get_connection(self, x: int, y: int, size: int, side: Side, uuid: str):
     connections = []
 
     match side:
       case Side.LEFT:
-        connections = self.vertical_connections[y + id][x]
+        connections = self.vertical_connections[y + uuid][x]
       case Side.RIGHT:
-        connections = self.vertical_connections[y + id][x + size]
+        connections = self.vertical_connections[y + uuid][x + size]
       case Side.TOP:
-        connections = self.horizontal_connections[y][x + id]
+        connections = self.horizontal_connections[y][x + uuid]
       case Side.BOTTOM:
-        connections = self.horizontal_connections[y + size][x + id]
+        connections = self.horizontal_connections[y + size][x + uuid]
 
+    print(f"Connections: {connections}")
     try:
-      output_link = next(e for e in connections if e.interface_id != id)
+      output_link = next(e for e in connections if e.tile.uuid != uuid)
       return output_link
     except StopIteration:
+      print(f"Connection not found for {x}, {y}, {size}, {side}, {uuid}")
       return None

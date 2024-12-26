@@ -1,6 +1,6 @@
 from core.commons.constants import SHAPE
 from core.connector import Connector
-from core.perlin import Perlin
+from core.fills.perlin import Perlin
 from math import floor
 
 from core.tile import Tile
@@ -19,8 +19,10 @@ class QuadTree:
                 self._divide_quads()
         else:
             self.children = []
-            self.tile = Tile(x=boundary[0], y=boundary[1], size=boundary[2], connector=connector)
-            self.tile.connect()
+            self.tile = Tile(x=boundary[0],
+                             y=boundary[1],
+                             size=boundary[2],
+                             connector=connector)
 
     @property
     def can_be_divided(self):
@@ -38,7 +40,9 @@ class QuadTree:
             for x in range(0, k_width, SHAPE):
                 boundary = (x, y, SHAPE, SHAPE)
                 self.children.append(QuadTree(boundary,
-                                              self.matrix.slice(*boundary),
+                                              self.matrix.slice(x=boundary[0],
+                                                                y=boundary[1],
+                                                                size=boundary[2]),
                                               self.connector,
                                               self.depth + 1))
 
