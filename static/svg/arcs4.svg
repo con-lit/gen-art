@@ -2,54 +2,54 @@
 <svg id="Ebene_2" data-name="Ebene 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
   <g id="production">
     <g id="arcs4">
-      <rect id="c8" width="400" height="400" fill="color8" stroke-width="0"/>
+      <rect id="c8" width="400" height="400" fill="{color8}" stroke-width="0"/>
       <g id="c7">
-        <path d="M0,375c207.11,0,375-167.89,375-375H0v375Z" fill="color7" stroke-width="0"/>
+        <path d="M0,375c207.11,0,375-167.89,375-375H0v375Z" fill="{color7}" stroke-width="0"/>
       </g>
       <g id="c6">
-        <path d="M0,325c179.49,0,325-145.51,325-325H0v325Z" fill="color6" stroke-width="0"/>
+        <path d="M0,325c179.49,0,325-145.51,325-325H0v325Z" fill="{color6}" stroke-width="0"/>
       </g>
       <g id="c5">
-        <path d="M0,275c151.88,0,275-123.12,275-275H0v275Z" fill="color5" stroke-width="0"/>
+        <path d="M0,275c151.88,0,275-123.12,275-275H0v275Z" fill="{color5}" stroke-width="0"/>
       </g>
       <g id="c4">
-        <path d="M0,225c124.26,0,225-100.74,225-225H0v225Z" fill="color4" stroke-width="0"/>
+        <path d="M0,225c124.26,0,225-100.74,225-225H0v225Z" fill="{color4}" stroke-width="0"/>
       </g>
       <g id="c3">
-        <path d="M0,175c96.65,0,175-78.35,175-175H0v175Z" fill="color3" stroke-width="0"/>
+        <path d="M0,175c96.65,0,175-78.35,175-175H0v175Z" fill="{color3}" stroke-width="0"/>
       </g>
       <g id="c2">
-        <path d="M0,125c69.04,0,125-55.96,125-125H0v125Z" fill="color2" stroke-width="0"/>
+        <path d="M0,125c69.04,0,125-55.96,125-125H0v125Z" fill="{color2}" stroke-width="0"/>
       </g>
       <g id="c1">
-        <path d="M0,75c41.42,0,75-33.58,75-75H0v75Z" fill="color1" stroke-width="0"/>
+        <path d="M0,75c41.42,0,75-33.58,75-75H0v75Z" fill="{color1}" stroke-width="0"/>
       </g>
       <g id="c0">
-        <path d="M0,25c13.81,0,25-11.19,25-25H0v25Z" fill="color0" stroke-width="0"/>
+        <path d="M0,25c13.81,0,25-11.19,25-25H0v25Z" fill="{color0}" stroke-width="0"/>
       </g>
       <g id="c9">
-        <path d="M400,25C192.89,25,25,192.89,25,400h375V25Z" fill="color9" stroke-width="0"/>
+        <path d="M400,25C192.89,25,25,192.89,25,400h375V25Z" fill="{color9}" stroke-width="0"/>
       </g>
       <g id="c10">
-        <path d="M400,75c-179.49,0-325,145.51-325,325h325V75Z" fill="color10" stroke-width="0"/>
+        <path d="M400,75c-179.49,0-325,145.51-325,325h325V75Z" fill="{color10}" stroke-width="0"/>
       </g>
       <g id="c11">
-        <path d="M400,125c-151.88,0-275,123.12-275,275h275V125Z" fill="color11" stroke-width="0"/>
+        <path d="M400,125c-151.88,0-275,123.12-275,275h275V125Z" fill="{color11}" stroke-width="0"/>
       </g>
       <g id="c12">
-        <path d="M400,175c-124.26,0-225,100.74-225,225h225v-225Z" fill="color12" stroke-width="0"/>
+        <path d="M400,175c-124.26,0-225,100.74-225,225h225v-225Z" fill="{color12}" stroke-width="0"/>
       </g>
       <g id="c13">
-        <path d="M400,225c-96.65,0-175,78.35-175,175h175v-175Z" fill="color13" stroke-width="0"/>
+        <path d="M400,225c-96.65,0-175,78.35-175,175h175v-175Z" fill="{color13}" stroke-width="0"/>
       </g>
       <g id="c14">
-        <path d="M400,275c-69.04,0-125,55.96-125,125h125v-125Z" fill="color14" stroke-width="0"/>
+        <path d="M400,275c-69.04,0-125,55.96-125,125h125v-125Z" fill="{color14}" stroke-width="0"/>
       </g>
       <g id="c15">
-        <path d="M400,325c-41.42,0-75,33.58-75,75h75v-75Z" fill="color15" stroke-width="0"/>
+        <path d="M400,325c-41.42,0-75,33.58-75,75h75v-75Z" fill="{color15}" stroke-width="0"/>
       </g>
       <g id="c16">
-        <path d="M400,375c-13.81,0-25,11.19-25,25h25v-25Z" fill="color16" stroke-width="0"/>
+        <path d="M400,375c-13.81,0-25,11.19-25,25h25v-25Z" fill="{color16}" stroke-width="0"/>
       </g>
     </g>
   </g>

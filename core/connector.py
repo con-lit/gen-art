@@ -1,4 +1,6 @@
 from core.commons.enums import Side
+from core.commons.data_classes import Link
+
 
 class Connector:
   def __init__(self, width: int, height: int):
@@ -11,34 +13,32 @@ class Connector:
   horizontal_connections = []
   registered_interfaces:int = 0
 
-  def register_connections(self, tile, interface_id: int):
-    from core.commons.data_classes import Link
+  def register_connections(self, tile, id: int):
     x = tile.x
     y = tile.y
 
-    self.vertical_connections[y + interface_id][x].append(Link(tile, Side.LEFT, interface_id))
-    self.vertical_connections[y + interface_id][x + tile.size].append(Link(tile, Side.RIGHT, interface_id))
-    self.horizontal_connections[y][x + interface_id].append(Link(tile, Side.TOP, interface_id))
-    self.horizontal_connections[y + tile.size][x + interface_id].append(Link(tile, Side.BOTTOM, interface_id))
+    self.vertical_connections[y + id][x].append(Link(tile, Side.LEFT, id))
+    self.vertical_connections[y + id][x + tile.size].append(Link(tile, Side.RIGHT, id))
+    self.horizontal_connections[y][x + id].append(Link(tile, Side.TOP, id))
+    self.horizontal_connections[y + tile.size][x + id].append(Link(tile, Side.BOTTOM, id))
     self.registered_interfaces += 1
 
-  def get_connection(self, x: int, y: int, size: int, side: Side, uuid: str):
+  def get_connection(self, tile, side: Side, id: int):
     connections = []
 
     match side:
       case Side.LEFT:
-        connections = self.vertical_connections[y + uuid][x]
+        connections = self.vertical_connections[tile.y + id][tile.x]
       case Side.RIGHT:
-        connections = self.vertical_connections[y + uuid][x + size]
+        connections = self.vertical_connections[tile.y + id][tile.x + tile.size]
       case Side.TOP:
-        connections = self.horizontal_connections[y][x + uuid]
+        connections = self.horizontal_connections[tile.y][tile.x + id]
       case Side.BOTTOM:
-        connections = self.horizontal_connections[y + size][x + uuid]
-
-    print(f"Connections: {connections}")
+        connections = self.horizontal_connections[tile.y + tile.size][tile.x + id]
     try:
-      output_link = next(e for e in connections if e.tile.uuid != uuid)
+      output_link = next(e for e in connections if e.tile != tile)
       return output_link
     except StopIteration:
-      print(f"Connection not found for {x}, {y}, {size}, {side}, {uuid}")
+      print(connections)
+      print(f"Connection not found for {tile.x}, {tile.y}, {tile.size}, {side}, {tile.uuid}")
       return None

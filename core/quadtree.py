@@ -26,7 +26,7 @@ class QuadTree:
 
     @property
     def can_be_divided(self):
-        return self.depth < 2 and self.matrix.max >0
+        return self.depth < 3 and self.matrix.max >0
     
     @property
     def divided(self):

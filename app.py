@@ -99,8 +99,9 @@ def draw(ctx, tile:Tile):
     screen_size = s * TILE_SIZE
     svg_data = patterns.get(s, tile.type)
     for i, stroke in enumerate(tile.strokes):
+        color_name = f'{{color{i}}}'
         hex_color = f'#{stroke.color[0]:02x}{stroke.color[1]:02x}{stroke.color[2]:02x}'
-        svg_data = svg_data.replace(f'color{i}', hex_color)
+        svg_data = svg_data.replace(color_name, hex_color)
     bytes = cairosvg.svg2png(bytestring=svg_data,
                              output_height=screen_size,
                              output_width=screen_size,)  
@@ -112,9 +113,6 @@ def draw(ctx, tile:Tile):
     ctx.set_source_surface(surface, 0, 0)
     ctx.paint()
     ctx.restore()
-
-def get_tiles_at(x, y) -> List[Tile]:
-    pass
     
 
 if __name__ == '__main__':

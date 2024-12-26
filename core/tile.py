@@ -5,11 +5,10 @@ import math
 from typing import List, Dict
 
 from core.commons.enums import Side, TileType
-from core.connector import Connector
 from core.stroke import Stroke
 
 class Tile:
-    def __init__(self, x: int, y: int, size: int, connector: Connector):
+    def __init__(self, x: int, y: int, size: int, connector):
         self.strokes = [Stroke() for _ in range(size * STROKES_PER_CELL * 2 + 1)]
         self.uuid = uuid.uuid4()
         self._x = x
@@ -17,11 +16,20 @@ class Tile:
         self._size = size
         self._connector = connector
         self._type = TileType.ARKS #random.choice(list(TileType))
-        self._rotation_index = random.randint(0, 3)
+        self._rotation_index = 0#random.randint(0, 3)
         self._interfaces = {}
         self._register_links()
         self._side_indexes = self._create_indexes()
         self._connect()
+
+    def __eq__(self, value):
+        return self.uuid == value.uuid
+    
+    def __str__(self):
+        return str(self.uuid)
+    
+    def __repr__(self):
+        return f"Tile(uuid={self.uuid})"
 
     @property
     def x(self):
@@ -121,9 +129,7 @@ class Tile:
     def _connect(self):
         self._interfaces = {side: [] for side in Side}
         for side in self._interfaces.keys():
-            interface_side = [self._connector.get_connection(self._x,
-                                                             self._y,
-                                                             self._size,
+            interface_side = [self._connector.get_connection(self,
                                                              side, 
                                                              interface_id) for interface_id in range(self._size)]
             self._interfaces[side] = interface_side
