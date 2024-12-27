@@ -79,4 +79,5 @@ class QuadTree:
             for child in self.children: child.colorize(color)
         else:
             for stroke in  self.tile.strokes:
-                stroke.set_color(color())
+                new_color = color()
+                stroke.set_color(new_color)

@@ -24,7 +24,7 @@ class Stroke:
             else:
                 self._connectors[side].append(connection)
 
-    def set_color(self, new_color:int):
+    def set_color(self, new_color):
         if self._color == new_color:
             return
         self._color = new_color
