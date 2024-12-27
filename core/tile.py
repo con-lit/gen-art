@@ -15,12 +15,11 @@ class Tile:
         self._y = y
         self._size = size
         self._connector = connector
-        self._type = TileType.ARKS #random.choice(list(TileType))
-        self._rotation_index = 0#random.randint(0, 3)
+        self._type = TileType.LINES #random.choice(list(TileType))
+        self._rotation_index = random.choice([2]) #random.randint(0, 3)
         self._interfaces = {}
         self._register_links()
         self._side_indexes = self._create_indexes()
-        self._connect()
 
     def __eq__(self, value):
         return self.uuid == value.uuid
@@ -64,9 +63,6 @@ class Tile:
 
         match self._type:
             case TileType.ARKS:
-                '''
-                top = [[0, 1, 2, 3, 4], [5, 6, 7, 8, 9], [10, 11, 12, 13, 14], [15, 16, 17, 18, 19], [20, 21, 22, 23, 24]]
-                '''
                 top = [
                     [interface_id * STROKES_PER_CELL + id for id in range(STROKES_PER_CELL + 1)]
                         for interface_id in range(self._size)
@@ -126,7 +122,7 @@ class Tile:
 
         return output
 
-    def _connect(self):
+    def connect(self):
         self._interfaces = {side: [] for side in Side}
         for side in self._interfaces.keys():
             interface_side = [self._connector.get_connection(self,

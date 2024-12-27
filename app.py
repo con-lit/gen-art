@@ -37,7 +37,7 @@ def generate_bitmap():
     width = int(request.args.get('width', 100))
     height = int(request.args.get('height', 100))
     cairo_surface= create_pattern(width, height)
-    img = to_pil(cairo_surface)
+    img = cairo_to_pil(cairo_surface)
     buf = BytesIO()
     img.save(buf, format='PNG')
     buf.seek(0)
@@ -52,7 +52,7 @@ def generate_svg():
     buf.seek(0)
     return send_file(buf, mimetype='image/svg+xml')
 
-def to_pil(surface: ImageSurface) -> Image:
+def cairo_to_pil(surface: ImageSurface) -> Image:
     format = surface.get_format()
     size = (surface.get_width(), surface.get_height())
     stride = surface.get_stride()
@@ -84,6 +84,7 @@ def create_pattern(width:int, hight:int) -> ImageSurface:
     quadtree = QuadTree((0, 0, k_width, k_hight),
                         matrix = Perlin(k_width, k_hight, octaves=3),
                         connector = Connector(k_width, k_hight))
+    quadtree.connect()
     quadtree.colorize(monochrome_color)
 
     surface = ImageSurface(FORMAT_ARGB32, k_width*TILE_SIZE, k_hight*TILE_SIZE)

@@ -3,7 +3,7 @@
   <g id="lines-4">
     <g id="lines4">
       <g id="fills">
-        <rect id="c8" x="12.5" y="12.5" width="400" height="375" transform="translate(12.5 412.5) rotate(-90)" fill="color8" stroke-width="0"/>
+        <rect id="c8" x="12.5" y="12.5" width="400" height="375" transform="translate(12.5 412.5) rotate(-90)" fill="{color8}" stroke-width="0"/>
         <rect id="c7" x="25" y="0" width="350" height="400" fill="{color7}" stroke-width="0"/>
         <rect id="c6" x="25" y="0" width="300" height="400" fill="{color6}" stroke-width="0"/>
         <rect id="c5" x="25" y="0" width="250" height="400" fill="{color5}" stroke-width="0"/>
@@ -19,32 +19,6 @@
         <rect id="c11" x="0" y="48.43" width="400" height="126.57" fill="{color11}" stroke-width="0"/>
         <rect id="c10" x="0" y="50" width="400" height="75" fill="{color10}" stroke-width="0"/>
         <rect id="c9" x="0" y="25" width="400" height="50" fill="{color9}" stroke-width="0"/>
-      </g>
-      <g>
-        <line x1="0" y1="25" x2="400" y2="25" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="0" y1="75" x2="400" y2="75" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="0" y1="125" x2="400" y2="125" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="0" y1="175" x2="400" y2="175" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="0" y1="225" x2="400" y2="225" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="0" y1="275" x2="400" y2="275" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="0" y1="325" x2="400" y2="325" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="0" y1="375" x2="400" y2="375" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="25" y1="0" x2="25" y2="25" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="75" y1="0" x2="75" y2="25" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="125" y1="0" x2="125" y2="25" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="175" y1="0" x2="175" y2="25" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="225" y1="0" x2="225" y2="25" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="275" y1="0" x2="275" y2="25" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="325" y1="0" x2="325" y2="25" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="375" y1="0" x2="375" y2="25" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="25" y1="375" x2="25" y2="400" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="75" y1="375" x2="75" y2="400" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="125" y1="375" x2="125" y2="400" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="175" y1="375" x2="175" y2="400" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="225" y1="375" x2="225" y2="400" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="275" y1="375" x2="275" y2="400" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="325" y1="375" x2="325" y2="400" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
-        <line x1="375" y1="375" x2="375" y2="400" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
       </g>
     </g>
   </g>

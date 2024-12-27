@@ -16,6 +16,7 @@ class Connector:
   def register_connections(self, tile, id: int):
     x = tile.x
     y = tile.y
+    print("register:", x,y,id)
 
     self.vertical_connections[y + id][x].append(Link(tile, Side.LEFT, id))
     self.vertical_connections[y + id][x + tile.size].append(Link(tile, Side.RIGHT, id))
