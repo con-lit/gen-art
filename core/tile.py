@@ -15,8 +15,8 @@ class Tile:
         self._y = y
         self._size = size
         self._connector = connector
-        self._type = TileType.LINES #random.choice(list(TileType))
-        self._rotation_index = random.choice([0]) #random.randint(0, 3)
+        self._type = random.choice(list(TileType))
+        self._rotation_index = random.randint(0, 3) #random.choice([0])
         self._interfaces = {}
         self._register_links()
         self._side_indexes = self._create_indexes()
@@ -75,11 +75,12 @@ class Tile:
                 right = [list(e) for e in bottom]
             case TileType.LINES:
                 top = [
-                    [interface_id * STROKES_PER_CELL + id for id in range(STROKES_PER_CELL + 1)]
+                    [interface_id * STROKES_PER_CELL + stroke_id for stroke_id in range(STROKES_PER_CELL + 1)]
                         for interface_id in range(self._size)]
                 left = [
                     [self._size * STROKES_PER_CELL + interface_id * STROKES_PER_CELL + stroke_id for stroke_id in range(STROKES_PER_CELL + 1)]
                         for interface_id in range(self._size)]
+                
                 right = [list(e) for e in left]
                 bottom = [list(e) for e in top]
 
@@ -88,6 +89,7 @@ class Tile:
 
                 left[0][0] = top_left
                 left[-1][-1] = top_left
+                right[0][0] = bottom_right
                 right[-1][-1] = bottom_right
             case _:
                 raise ValueError(f"Invalid tile type {self._type}")

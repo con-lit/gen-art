@@ -12,7 +12,8 @@ from core.connector import Connector
 from core.pattern import Pattern
 from core.fills.perlin import Perlin
 from core.quadtree import QuadTree
-
+import sys
+sys.setrecursionlimit(10000)
 
 app = Flask(__name__)
 
@@ -80,6 +81,9 @@ def divide_surface(l, s, m):
 def create_pattern(width:int, hight:int) -> ImageSurface:
     k_width = divide_surface(width, TILE_SIZE, SHAPE)
     k_hight = divide_surface(hight, TILE_SIZE, SHAPE)
+    print(k_width, k_hight)
+    # k_width = 36
+    # k_hight = 20
 
     quadtree = QuadTree((0, 0, k_width, k_hight),
                         matrix = Perlin(k_width, k_hight, octaves=3),

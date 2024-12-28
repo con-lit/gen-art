@@ -16,7 +16,6 @@ class Connector:
   def register_connections(self, tile, id: int):
     x = tile.x
     y = tile.y
-    print("register:", x,y,id)
 
     self.vertical_connections[y + id][x].append(Link(tile, Side.LEFT, id))
     self.vertical_connections[y + id][x + tile.size].append(Link(tile, Side.RIGHT, id))
@@ -40,6 +39,4 @@ class Connector:
       output_link = next(e for e in connections if e.tile != tile)
       return output_link
     except StopIteration:
-      print(connections)
-      print(f"Connection not found for {tile.x}, {tile.y}, {tile.size}, {side}, {tile.uuid}")
       return None
