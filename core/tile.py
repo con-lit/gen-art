@@ -15,8 +15,8 @@ class Tile:
         self._y = y
         self._size = size
         self._connector = connector
-        self._type = random.choice(list(TileType))
-        self._rotation_index = random.randint(0, 3) #random.choice([0])
+        self._type = TileType.ARKS if random.random() < 0.9 else TileType.LINES
+        self._rotation_index = 3#random.randint(0, 3)
         self._interfaces = {}
         self._register_links()
         self._side_indexes = self._create_indexes()

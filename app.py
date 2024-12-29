@@ -9,6 +9,7 @@ import cairo
 from cairo import ImageSurface, FORMAT_ARGB32, Context
 from core.commons.constants import SHAPE, TILE_SIZE
 from core.connector import Connector
+from core.demo_tile import DemoTile
 from core.pattern import Pattern
 from core.fills.perlin import Perlin
 from core.quadtree import QuadTree
@@ -81,19 +82,16 @@ def divide_surface(l, s, m):
 def create_pattern(width:int, hight:int) -> ImageSurface:
     k_width = divide_surface(width, TILE_SIZE, SHAPE)
     k_hight = divide_surface(hight, TILE_SIZE, SHAPE)
-    print(k_width, k_hight)
-    # k_width = 36
-    # k_hight = 20
 
     quadtree = QuadTree((0, 0, k_width, k_hight),
                         matrix = Perlin(k_width, k_hight, octaves=3),
                         connector = Connector(k_width, k_hight))
-    quadtree.connect()
-    quadtree.colorize(monochrome_color)
+    # quadtree.connect()
+    # quadtree.colorize(monochrome_color)
 
     surface = ImageSurface(FORMAT_ARGB32, k_width*TILE_SIZE, k_hight*TILE_SIZE)
     ctx = Context(surface)
-    quadtree.show(ctx, draw)
+    quadtree.show(ctx, demo_draw)
     return surface
 
 from core.tile import Tile
@@ -104,9 +102,11 @@ def draw(ctx, tile:Tile):
     screen_size = s * TILE_SIZE
     svg_data = patterns.get(s, tile.type)
     for i, stroke in enumerate(tile.strokes):
-        color_name = f'{{color{i}}}'
+        color_name = f'{{fill{i}}}'
         hex_color = f'#{stroke.color[0]:02x}{stroke.color[1]:02x}{stroke.color[2]:02x}'
         svg_data = svg_data.replace(color_name, hex_color)
+        svg_data = svg_data.replace(r"{stroke}", "#000")
+        svg_data = svg_data.replace(r"{stroke-width}", "8")
     bytes = cairosvg.svg2png(bytestring=svg_data,
                              output_height=screen_size,
                              output_width=screen_size,)  
@@ -118,6 +118,34 @@ def draw(ctx, tile:Tile):
     ctx.set_source_surface(surface, 0, 0)
     ctx.paint()
     ctx.restore()
+
+def demo_draw(ctx, tile:DemoTile):
+    x = tile.x
+    y = tile.y
+    s = tile.size
+    colors = tile.matrix
+    screen_size = s * TILE_SIZE
+    # draw white quadrat with black border in cairo context ctx
+    # iterate through 2d numpy array and draw rectangles
+
+    # 1. draw outlines of rectangles
+    ctx.set_source_rgb(1, 1, 1)  # set the color to black
+    ctx.rectangle(x * TILE_SIZE, y * TILE_SIZE, s * TILE_SIZE, s * TILE_SIZE)
+    ctx.stroke()  # draw the outline of the rectangle
+
+    # 2. draw the rectangles
+    matrix = tile.matrix._data
+    for i in range(matrix.shape[0]):
+        for j in range(matrix.shape[1]):
+            value = colors._data[i][j]
+            color = (2*value + 1)/2
+            print(i, j, color)
+            ctx.set_source_rgb(color, color, color)
+            ctx.rectangle((x + i) * TILE_SIZE, (y + j) * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+            ctx.fill()
+    
+
+
     
 
 if __name__ == '__main__':
