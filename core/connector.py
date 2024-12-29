@@ -1,11 +1,17 @@
-from core.commons.enums import Side
+from core.commons.enums import Design, Direction, Side
 from core.commons.data_classes import Link
 
 
 class Connector:
-  def __init__(self, width: int, height: int):
+  def __init__(self,
+               width: int,
+               height: int,
+               design:Design = Design.MIXED,
+               direction:Direction = Direction.MIXED):
     if not (width > 0 and height > 0):
       raise ValueError("Width and height must be greater than 0.")
+    self.design = design
+    self.direction = direction
     self.horizontal_connections = [[[] for _ in range(width)] for _ in range(height + 1)]
     self.vertical_connections = [[[] for _ in range(width + 1)] for _ in range(height)]
   

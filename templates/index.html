@@ -11,10 +11,6 @@
             height: 100%;
             overflow: hidden;
         }
-        body {
-            background: url('/bitmap?width=' + window.innerWidth + '&height=' + window.innerHeight) no-repeat center center fixed;
-            background-size: fill;
-        }
         #preloader {
             position: fixed;
             top: 0; left: 0;
@@ -48,7 +44,7 @@
         <div class="col-auto">
           <div class="dropdown">
             <button 
-              id="dropdownButton"
+              id="dropdownDesignButton"
               class="btn btn-secondary dropdown-toggle" 
               type="button" 
               data-bs-toggle="dropdown" 
@@ -56,7 +52,7 @@
               Lines and arcs
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" id="lines_and_arcs" href="#">Lines and arcs</a></li>
+              <li><a class="dropdown-item" id="mixed_designs" href="#">Lines and arcs</a></li>
               <li><a class="dropdown-item" id="more_lines" href="#">More lines</a></li>
               <li><a class="dropdown-item" id="more_arcs" href="#">More arcs</a></li>
               <li><a class="dropdown-item" id="only_lines" href="#">Only lines</a></li>
@@ -75,29 +71,41 @@
               Mixed directions
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" id="mixed" href="#">Mixed directions</a></li>
+              <li><a class="dropdown-item" id="mixed_directions" href="#">Mixed directions</a></li>
               <li><a class="dropdown-item" id="horizontal" href="#">Only horizontal</a></li>
               <li><a class="dropdown-item" id="vertical" href="#">Only vertical</a></li>
             </ul>
           </div>
         </div>
+        <div class="col-auto">
+          <button 
+            id="redrawButton"
+            class="btn btn-primary">
+            Redraw
+          </button>
+        </div>
       </div>
     </div>
     <script>
-        let selectedDesign = 'lines_and_arcs';     // default
-        let selectedDirection = 'mixed';           // default
+        let selectedDesign = 'mixed_designs';
+        let selectedDirection = 'mixed_directions';
 
         function setBackgroundImage() {
+            const now = Date.now();
             const width = window.innerWidth;
             const height = window.innerHeight;
             const designParam = `&design=${selectedDesign}`;
             const directionParam = `&direction=${selectedDirection}`;
+            const cacheBust = `&cb=${now}`;
             const image = new Image();
             image.onload = () => {
                 document.body.style.backgroundImage = `url(${image.src})`;
+                document.body.style.backgroundRepeat = 'no-repeat';
+                document.body.style.backgroundPosition = 'center';
+                document.body.style.backgroundSize = 'fill';
                 document.getElementById('preloader').style.display = 'none';
             };
-            image.src = `/bitmap?width=${width}&height=${height}${designParam}${directionParam}`;
+            image.src = `/bitmap?width=${width}&height=${height}${designParam}${directionParam}${cacheBust}`;
         }
 
         window.onresize = setBackgroundImage;
@@ -107,15 +115,19 @@
         document.querySelectorAll('.dropdown-item').forEach(item => {
             item.addEventListener('click', e => {
                 e.preventDefault();
-                if (['lines_and_arcs','more_lines','more_arcs','only_lines','only_arcs'].includes(item.id)) {
+                if (['mixed_designs','more_lines','more_arcs','only_lines','only_arcs'].includes(item.id)) {
                     selectedDesign = item.id;
-                    dropdownButton.textContent = item.textContent;
+                    dropdownDesignButton.textContent = item.textContent;
                 } else {
                     selectedDirection = item.id;
                     dropdownDirectionButton.textContent = item.textContent;
                 }
                 setBackgroundImage();
             });
+        });
+
+        document.getElementById('redrawButton').addEventListener('click', () => {
+            setBackgroundImage();
         });
     </script>
     <script 

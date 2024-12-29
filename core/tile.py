@@ -4,10 +4,13 @@ import random
 import math
 from typing import List, Dict
 
-from core.commons.enums import Side, TileType
+from core.commons.enums import Design, Direction, Side, TileType
 from core.stroke import Stroke
 
 class Tile:
+    _type:TileType
+    _rotation_index:int
+
     def __init__(self, x: int, y: int, size: int, connector):
         self.strokes = [Stroke() for _ in range(size * STROKES_PER_CELL * 2 + 1)]
         self.uuid = uuid.uuid4()
@@ -15,9 +18,34 @@ class Tile:
         self._y = y
         self._size = size
         self._connector = connector
-        self._type = TileType.ARKS if random.random() < 0.9 else TileType.LINES
-        self._rotation_index = 3#random.randint(0, 3)
         self._interfaces = {}
+        
+        match connector.design:
+            case Design.ONLY_ARCS:
+                self._type = TileType.ARKS
+            case Design.ONLY_LINES:
+                self._type = TileType.LINES
+            case Design.MORE_ARCS:
+                self._type = TileType.ARKS if random.random() < 0.9 else TileType.LINES
+            case Design.MORE_LINES:
+                self._type = TileType.LINES if random.random() < 0.9 else TileType.ARKS
+            case Design.MIXED:
+                self._type = TileType.ARKS if random.random() < 0.5 else TileType.LINES
+            case _:
+                raise ValueError(f"Invalid design value {connector.design}")
+        
+        match connector.direction:
+            case Direction.HORIZONTAL:
+                self._rotation_index = 0
+            case Direction.VERTICAL:
+                self._rotation_index = 1
+            case Direction.MIXED:
+                self._rotation_index = random.randint(0, 3)
+            case _:
+                raise ValueError(f"Invalid direction value {connector.direction}")
+        
+        # print(self.uuid, self._type, self._rotation_index)
+        
         self._register_links()
         self._side_indexes = self._create_indexes()
 
