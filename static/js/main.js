@@ -1,6 +1,9 @@
 window.addEventListener('load', () => {
-    let selectedDesign = 'mixed_designs';
-    let selectedDirection = 'mixed_directions';
+    const designs = ['mixed_designs', 'more_lines', 'more_arcs', 'only_lines', 'only_arcs'];
+    const directions = ['mixed_directions', 'horizontal', 'vertical'];
+    
+    let selectedDesign = designs[0];
+    let selectedDirection = directions[0];
   
     function setBackgroundImage() {
       const now = Date.now();
@@ -24,7 +27,7 @@ window.addEventListener('load', () => {
     document.querySelectorAll('.dropdown-item').forEach(item => {
       item.addEventListener('click', e => {
         e.preventDefault();
-        if (['mixed_designs','more_lines','more_arcs','only_lines','only_arcs'].includes(item.id)) {
+        if (designs.includes(item.id)) {
           selectedDesign = item.id;
           dropdownDesignButton.textContent = item.textContent;
         } else {
@@ -36,6 +39,14 @@ window.addEventListener('load', () => {
     });
   
     document.getElementById('redrawButton').addEventListener('click', () => {
+      setBackgroundImage();
+    });
+
+    document.getElementById('randomButton').addEventListener('click', () => {
+      selectedDesign = designs[Math.floor(Math.random() * designs.length)];
+      selectedDirection = directions[Math.floor(Math.random() * directions.length)];
+      dropdownDesignButton.textContent = document.querySelector(`#${selectedDesign}`).textContent;
+      dropdownDirectionButton.textContent = document.querySelector(`#${selectedDirection}`).textContent;
       setBackgroundImage();
     });
   
