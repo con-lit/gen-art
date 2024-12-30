@@ -14,17 +14,17 @@ class Stroke:
         return self._color
 
     def add_link(self, side:Side, link, stroke_id:int):
-        from core.commons.data_classes import Connector
+        from core.commons.data_classes import Connection
         if link is None:
             self._connectors[side] = []
         else:
-            connector = Connector(link, stroke_id)
+            connection = Connection(link, stroke_id)
             if side not in self._connectors:
-                self._connectors[side] = [connector]
+                self._connectors[side] = [connection]
             else:
-                self._connectors[side].append(connector)
+                self._connectors[side].append(connection)
 
-    def set_color(self, new_color:int):
+    def set_color(self, new_color):
         if self._color == new_color:
             return
         self._color = new_color

@@ -1,14 +1,15 @@
 from dataclasses import dataclass
-from core.commons.enums import Side
-from core.tile import Tile
+
 
 @dataclass
 class Link:
+    from core.commons.enums import Side
+    from core.tile import Tile
     tile: Tile
     side: Side
     interface_id: int
 
 @dataclass
-class Connector:
-    link:Link
-    stroke_id:int
+class Connection:
+    link: Link
+    stroke_id: int

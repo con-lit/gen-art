@@ -2,5 +2,7 @@ flask
 pillow
 svgwrite
 pycairo
-perlin_noise
 cairosvg
+numpy
+perlin_noise
+pytest

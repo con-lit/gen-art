@@ -1,4 +1,4 @@
-from core.perlin import Perlin
+from core.fills.perlin import Perlin
 
 def test_perlin():
     perlin = Perlin(4, 4, octaves = 3, seed = 1)

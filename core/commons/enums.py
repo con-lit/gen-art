@@ -32,3 +32,20 @@ class Side(Enum):
 class TileType(Enum):
     ARKS = 0
     LINES = 1
+
+class Design(Enum):
+    MIXED = "mixed_designs"
+    MORE_LINES = "more_lines"
+    MORE_ARCS = "more_arcs"
+    ONLY_LINES = "only_lines"
+    ONLY_ARCS = "only_arcs"
+
+class Direction(Enum):
+    MIXED = "mixed_directions"
+    HORIZONTAL = "horizontal"
+    VERTICAL = "vertical"
+
+class Theme(Enum):
+    GREEN = "green"
+    MORDOR = "mordor"
+    RANDOM = "random"

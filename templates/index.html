@@ -3,30 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <title>consta.de</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        body {
-            background: url('/bitmap?width=' + window.innerWidth + '&height=' + window.innerHeight) no-repeat center center fixed;
-            background-size: fill;
-        }
-    </style>
+    <link 
+      rel="stylesheet" 
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link 
+      rel="stylesheet" 
+      href="{{ url_for('static', filename='bootstrap/dist/css/custom.css') }}"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <script>
-        function setBackgroundImage() {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            document.body.style.backgroundImage = `url('/bitmap?width=${width}&height=${height}')`;
-            document.body.style.backgroundPosition = `center`;
-        }
-        window.onresize = setBackgroundImage;
-        window.onload = setBackgroundImage;
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-auto">
+          <div class="dropdown">
+            <button 
+              id="dropdownColorsButton"
+              class="btn btn-secondary dropdown-toggle" 
+              type="button" 
+              data-bs-toggle="dropdown" 
+              aria-expanded="false">
+              Random colors
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" id="random" href="#">Random colors</a></li>
+              <li><a class="dropdown-item" id="green" href="#">Green field</a></li>
+              <li><a class="dropdown-item" id="mordor" href="#">Sauron</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="dropdown">
+            <button 
+              id="dropdownDesignButton"
+              class="btn btn-secondary dropdown-toggle" 
+              type="button" 
+              data-bs-toggle="dropdown" 
+              aria-expanded="false">
+              Lines and arcs
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" id="mixed_designs" href="#">Lines and arcs</a></li>
+              <li><a class="dropdown-item" id="more_lines" href="#">More lines</a></li>
+              <li><a class="dropdown-item" id="more_arcs" href="#">More arcs</a></li>
+              <li><a class="dropdown-item" id="only_lines" href="#">Only lines</a></li>
+              <li><a class="dropdown-item" id="only_arcs" href="#">Only arcs</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="dropdown">
+            <button 
+              id="dropdownDirectionButton"
+              class="btn btn-secondary dropdown-toggle" 
+              type="button" 
+              data-bs-toggle="dropdown" 
+              aria-expanded="false">
+              Mixed directions
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" id="mixed_directions" href="#">Mixed directions</a></li>
+              <li><a class="dropdown-item" id="horizontal" href="#">Only horizontal</a></li>
+              <li><a class="dropdown-item" id="vertical" href="#">Only vertical</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-auto">
+          <button 
+            id="randomButton"
+            class="btn btn-primary">
+            I'm feeling lucky
+          </button>
+        </div>
+        <div class="col-auto ms-auto">
+          <button 
+            id="redrawButton"
+            class="btn btn-primary">
+            <i class="bi bi-arrow-clockwise"></i> Redraw
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script 
+      src="{{ url_for('static', filename='bootstrap/dist/js/bootstrap.bundle.min.js') }}">
     </script>
 </body>
 </html>

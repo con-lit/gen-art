@@ -6,12 +6,12 @@ from core.commons.enums import TileType
 class Pattern:
     def __init__(self):
         files = [
-            "arcs_1",
-            "arcs_2",
-            "arcs_4",
-            "lines_1",
-            "lines_2",
-            "lines_4",
+            "arcs1",
+            "arcs2",
+            "arcs4",
+            "lines1",
+            "lines2",
+            "lines4",
         ]
         self._files = {}
         for file in files:
@@ -24,9 +24,9 @@ class Pattern:
             raise ValueError("Size must be one of 1, 2, 4")
         match pattern:
             case TileType.ARKS:
-                key = f"arcs_{size}"
+                key = f"arcs{size}"
             case TileType.LINES:
-                key = f"lines_{size}"
+                key = f"lines{size}"
             case _:
                 raise ValueError("Wrong tile type")
         svg_data = self._files[key]
