@@ -5,8 +5,9 @@ from PIL import Image
 import svgwrite
 import cairo
 from cairo import ImageSurface, FORMAT_ARGB32, Context
+from core.color_theme import ColorTheme
 from core.commons.constants import SHAPE, TILE_SIZE
-from core.commons.enums import Design, Direction
+from core.commons.enums import Design, Direction, Theme
 from core.connector import Connector
 from core.draw import demo_draw, draw
 from core.fills.perlin import Perlin
@@ -15,16 +16,6 @@ import sys
 sys.setrecursionlimit(10000)
 
 app = Flask(__name__)
-
-def monochrome_color() -> tuple:
-    colors = [
-        (0x2B, 0x45, 0x0E),
-        (0xAB, 0xCE, 0x86),
-        (0x79, 0xC4, 0x29),
-        (0x45, 0x64, 0x23),
-        (0x5A, 0x91, 0x1F),
-    ]
-    return random.choice(colors)
 
 @app.route('/')
 def index():
@@ -45,7 +36,12 @@ def generate_bitmap():
     except ValueError:
         directions = Direction.MIXED
     
-    cairo_surface= create_pattern(width, height, design, directions)
+    try:
+        theme = Theme(str(str(request.args.get('theme'))))
+    except ValueError:
+        theme = Theme.RANDOM
+    
+    cairo_surface= create_pattern(width, height, design, directions, theme)
     img = cairo_to_pil(cairo_surface)
     buf = BytesIO()
     img.save(buf, format='PNG')
@@ -86,7 +82,7 @@ def divide_surface(l, s, m):
     k = (k // m + 1) * m if k % m != 0 else k
     return k
 
-def create_pattern(width:int, hight:int, design:Design, direction:Direction) -> ImageSurface:
+def create_pattern(width:int, hight:int, design:Design, direction:Direction, theme:Theme) -> ImageSurface:
     k_width = divide_surface(width, TILE_SIZE, SHAPE)
     k_hight = divide_surface(hight, TILE_SIZE, SHAPE)
 
@@ -97,7 +93,7 @@ def create_pattern(width:int, hight:int, design:Design, direction:Direction) -> 
                                               design = design,
                                               direction = direction))
     quadtree.connect()
-    quadtree.colorize(monochrome_color)
+    quadtree.colorize(ColorTheme(theme))
 
     surface = ImageSurface(FORMAT_ARGB32, k_width*TILE_SIZE, k_hight*TILE_SIZE)
     ctx = Context(surface)

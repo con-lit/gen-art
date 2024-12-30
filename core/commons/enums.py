@@ -44,3 +44,8 @@ class Direction(Enum):
     MIXED = "mixed_directions"
     HORIZONTAL = "horizontal"
     VERTICAL = "vertical"
+
+class Theme(Enum):
+    GREEN = "green"
+    MORDOR = "mordor"
+    RANDOM = "random"

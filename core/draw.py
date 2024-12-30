@@ -16,8 +16,7 @@ def draw(ctx, tile:Tile):
     svg_data = patterns.get(s, tile.type)
     for i, stroke in enumerate(tile.strokes):
         color_name = f'{{fill{i}}}'
-        hex_color = f'#{stroke.color[0]:02x}{stroke.color[1]:02x}{stroke.color[2]:02x}'
-        svg_data = svg_data.replace(color_name, hex_color)
+        svg_data = svg_data.replace(color_name, stroke.color)
         svg_data = svg_data.replace(r"{stroke}", "#000")
         svg_data = svg_data.replace(r"{stroke-width}", "8")
     bytes = cairosvg.svg2png(bytestring=svg_data,

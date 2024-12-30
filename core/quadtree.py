@@ -1,3 +1,4 @@
+from core.color_theme import ColorTheme
 from core.commons.constants import SHAPE
 from core.connector import Connector
 from core.fills.perlin import Perlin
@@ -77,10 +78,9 @@ class QuadTree:
         else:
             self.tile.connect()
 
-    def colorize(self, color):
+    def colorize(self, color_theme:ColorTheme):
         if self.divided:
-            for child in self.children: child.colorize(color)
+            for child in self.children: child.colorize(color_theme)
         else:
             for stroke in  self.tile.strokes:
-                new_color = color()
-                stroke.set_color(new_color)
+                stroke.set_color(color_theme.random_color)
