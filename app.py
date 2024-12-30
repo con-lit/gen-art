@@ -1,4 +1,3 @@
-import random
 from flask import Flask, send_file, request, render_template
 from io import BytesIO
 from PIL import Image
@@ -9,7 +8,7 @@ from core.color_theme import ColorTheme
 from core.commons.constants import SHAPE, TILE_SIZE
 from core.commons.enums import Design, Direction, Theme
 from core.connector import Connector
-from core.draw import demo_draw, draw
+from core.draw import draw
 from core.fills.perlin import Perlin
 from core.quadtree import QuadTree
 import sys
@@ -99,10 +98,6 @@ def create_pattern(width:int, hight:int, design:Design, direction:Direction, the
     ctx = Context(surface)
     quadtree.show(ctx, draw)
     return surface
-    
-
-
-    
 
 if __name__ == '__main__':
     app.run(debug=True)
