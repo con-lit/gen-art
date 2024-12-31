@@ -92,7 +92,7 @@ def create_pattern(width:int, hight:int, design:Design, direction:Direction, the
                                               design = design,
                                               direction = direction))
     quadtree.connect()
-    quadtree.colorize(ColorTheme(theme))
+    # quadtree.colorize(ColorTheme(theme))
 
     surface = ImageSurface(FORMAT_ARGB32, k_width*TILE_SIZE, k_hight*TILE_SIZE)
     ctx = Context(surface)
