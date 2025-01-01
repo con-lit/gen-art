@@ -17,86 +17,94 @@
     <div id="preloader">
         <div class="spinner"></div>
     </div>
-    <div class="container mt-3">
+
+    <div class="container-fluid mt-3">
       <div class="row">
         <div class="col-auto">
-          <div class="dropdown">
-            <button 
-              id="dropdownColorsButton"
-              class="btn btn-secondary dropdown-toggle" 
-              type="button" 
-              data-bs-toggle="dropdown" 
-              aria-expanded="false">
-              Random colors
+            <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasNav">
+                <i class="bi bi-list"></i>
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" id="random" href="#">Random colors</a></li>
-              <li><a class="dropdown-item" id="green" href="#">Green field</a></li>
-              <li><a class="dropdown-item" id="mordor" href="#">Sauron</a></li>
-            </ul>
-          </div>
         </div>
         <div class="col-auto">
-          <div class="dropdown">
-            <button 
-              id="dropdownDesignButton"
-              class="btn btn-secondary dropdown-toggle" 
-              type="button" 
-              data-bs-toggle="dropdown" 
-              aria-expanded="false">
-              Lines and arcs
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" id="mixed_designs" href="#">Lines and arcs</a></li>
-              <li><a class="dropdown-item" id="more_lines" href="#">More lines</a></li>
-              <li><a class="dropdown-item" id="more_arcs" href="#">More arcs</a></li>
-              <li><a class="dropdown-item" id="only_lines" href="#">Only lines</a></li>
-              <li><a class="dropdown-item" id="only_arcs" href="#">Only arcs</a></li>
-            </ul>
+          <div class="row">
+            <div class="col-auto">
+              <div class="dropdown">
+                <button 
+                  id="dropdownColorsButton"
+                  class="btn btn-secondary dropdown-toggle" 
+                  type="button" 
+                  data-bs-toggle="dropdown" 
+                  aria-expanded="false">
+                  Random colors
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" id="random" href="#">Random colors</a></li>
+                  <li><a class="dropdown-item" id="green" href="#">Green field</a></li>
+                  <li><a class="dropdown-item" id="mordor" href="#">Sauron</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="dropdown">
+                <button 
+                  id="dropdownDesignButton"
+                  class="btn btn-secondary dropdown-toggle" 
+                  type="button" 
+                  data-bs-toggle="dropdown" 
+                  aria-expanded="false">
+                  Lines and arcs
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" id="mixed_designs" href="#">Lines and arcs</a></li>
+                  <li><a class="dropdown-item" id="more_lines" href="#">More lines</a></li>
+                  <li><a class="dropdown-item" id="more_arcs" href="#">More arcs</a></li>
+                  <li><a class="dropdown-item" id="only_lines" href="#">Only lines</a></li>
+                  <li><a class="dropdown-item" id="only_arcs" href="#">Only arcs</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="dropdown">
+                <button 
+                  id="dropdownDirectionButton"
+                  class="btn btn-secondary dropdown-toggle" 
+                  type="button" 
+                  data-bs-toggle="dropdown" 
+                  aria-expanded="false">
+                  Mixed directions
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" id="mixed_directions" href="#">Mixed directions</a></li>
+                  <li><a class="dropdown-item" id="horizontal" href="#">Only horizontal</a></li>
+                  <li><a class="dropdown-item" id="vertical" href="#">Only vertical</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-auto">
+              <button 
+                id="randomButton"
+                class="btn btn-primary">
+                I'm feeling lucky
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="col-auto">
-          <div class="dropdown">
-            <button 
-              id="dropdownDirectionButton"
-              class="btn btn-secondary dropdown-toggle" 
-              type="button" 
-              data-bs-toggle="dropdown" 
-              aria-expanded="false">
-              Mixed directions
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" id="mixed_directions" href="#">Mixed directions</a></li>
-              <li><a class="dropdown-item" id="horizontal" href="#">Only horizontal</a></li>
-              <li><a class="dropdown-item" id="vertical" href="#">Only vertical</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-auto">
-          <button 
-            id="randomButton"
-            class="btn btn-primary">
-            I'm feeling lucky
-          </button>
-        </div>
-        <div class="col-auto ms-auto">
-          <button 
-            id="redrawButton"
-            class="btn btn-primary">
-            <i class="bi bi-arrow-clockwise"></i> Redraw
-          </button>
         </div>
       </div>
     </div>
-    <!-- Offcanvas trigger button -->
-    <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+
+    <div class="position-fixed bottom-0 start-0 m-3">
+        <button 
+          id="redrawButton"
+          class="btn btn-primary">
+          <i class="bi bi-arrow-clockwise"></i> Redraw
+        </button>
+      </div>
 
     <!-- Offcanvas side nav -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav" aria-labelledby="offcanvasNavLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavLabel">consta.de</h5>
+        <h5 class="offcanvas-title" id="offcanvasNavLabel">Consta's Playground
+        </h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">

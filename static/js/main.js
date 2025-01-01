@@ -26,8 +26,6 @@ window.addEventListener('load', () => {
       image.src = `/bitmap?width=${width}&height=${height}${designParam}${directionParam}${colorsnParam}${cacheBust}`;
     }
   
-    window.onresize = setBackgroundImage;
-  
     document.querySelectorAll('.dropdown-item').forEach(item => {
       item.addEventListener('click', e => {
         e.preventDefault();
