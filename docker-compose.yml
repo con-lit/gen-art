@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: consta
+      POSTGRES_PASSWORD: mysuperpassword
+      POSTGRES_DB: consta_web
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    user: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U langfuse_user -d langfuse"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+    command: sh /code/setup.sh
+    volumes:
+      - ./app:/code/app 
+      - ./pattern_generator:/code/pattern_generator
+    working_dir: /code/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:

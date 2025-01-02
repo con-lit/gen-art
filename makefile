@@ -1,22 +1,17 @@
-# Variables
-IMAGE_NAME := gen-art-image
-CONTAINER_NAME := gen-art-container
-
 # Build the Docker image
 build:
-	docker build -t $(IMAGE_NAME) .
-
-# Run the Docker container
-run:
-	docker run -d -p 80:8000 --name $(CONTAINER_NAME) -v $(PWD):/app $(IMAGE_NAME)
+	docker compose up --build -d
 
 # Stop the Docker container
 stop:
-	docker stop $(CONTAINER_NAME)
+	docker compose down
+# Start the Docker container
+run:
+	docker compose up -d
 
-# Remove the Docker container
-remove:
-	docker rm $(CONTAINER_NAME)
+# Restart the Docker container
+restart: stop run
 
-# Clean up (stop and remove the container)
-clean: stop remove
+# Clean up: Stop and remove the container, then remove the image
+clean:
+	docker compose down --rmi all --volumes

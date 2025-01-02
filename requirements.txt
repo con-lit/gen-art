@@ -1,4 +1,5 @@
-flask
+django
+psycopg2-binary
 pillow
 svgwrite
 pycairo
@@ -6,4 +7,3 @@ cairosvg
 numpy
 perlin_noise
 pytest
-gunicorn
