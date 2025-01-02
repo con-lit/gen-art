@@ -37,7 +37,6 @@ def demo_draw(ctx, tile:DemoTile):
     y = tile.y
     s = tile.size
     colors = tile.matrix
-    screen_size = s * TILE_SIZE
     # draw white quadrat with black border in cairo context ctx
     # iterate through 2d numpy array and draw rectangles
 

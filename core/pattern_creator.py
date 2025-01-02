@@ -40,6 +40,12 @@ def truchet_tiles(width:int, hight:int, design:Design, direction:Direction, them
     k_width = divide_surface(width, TILE_SIZE, SHAPE)
     k_hight = divide_surface(hight, TILE_SIZE, SHAPE)
 
+    if k_width > 36:
+        k_width = 36
+
+    if k_hight > 24:
+        k_hight = 24
+
     quadtree = QuadTree((0, 0, k_width, k_hight),
                         matrix = Perlin(k_width, k_hight, octaves=3),
                         connector = Connector(k_width,

@@ -4,7 +4,7 @@ import svgwrite
 from core.commons.enums import Design, Direction, Theme
 import sys
 
-from core.pattern_creater import truchet_tiles
+from core.pattern_creator import truchet_tiles
 sys.setrecursionlimit(10000)
 
 app = Flask(__name__)
