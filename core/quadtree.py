@@ -66,9 +66,9 @@ class QuadTree:
             QuadTree(se, se_slice, self.connector),
         ]
 
-    def show(self, ctx, draw):
+    def render(self, ctx, draw):
         if self.divided:
-            for child in self.children: child.show(ctx, draw)
+            for child in self.children: child.render(ctx, draw)
         else:
             draw(ctx, self.tile)
 

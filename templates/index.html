@@ -20,14 +20,14 @@
 
     <div class="container-fluid mt-3">
       <div class="row">
-        <div class="col-auto">
+        <div class="col-auto mb-3">
             <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasNav">
                 <i class="bi bi-list"></i>
             </button>
         </div>
         <div class="col-auto">
-          <div class="row">
-            <div class="col-auto">
+            <div class="row row-cols-auto">
+            <div class="col-auto d-none d-md-block">
               <div class="dropdown">
                 <button 
                   id="dropdownColorsButton"
@@ -38,46 +38,99 @@
                   Random colors
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" id="random" href="#">Random colors</a></li>
-                  <li><a class="dropdown-item" id="green" href="#">Green field</a></li>
-                  <li><a class="dropdown-item" id="mordor" href="#">Sauron</a></li>
+                  <li><a class="dropdown-item cl-selector" id="random" href="#">Random colors</a></li>
+                  <li><a class="dropdown-item cl-selector" id="green" href="#">Green field</a></li>
+                  <li><a class="dropdown-item cl-selector" id="mordor" href="#">Sauron</a></li>
                 </ul>
               </div>
             </div>
-            <div class="col-auto">
+            <div class="col-auto d-none d-md-block">
               <div class="dropdown">
-                <button 
-                  id="dropdownDesignButton"
-                  class="btn btn-secondary dropdown-toggle" 
-                  type="button" 
-                  data-bs-toggle="dropdown" 
-                  aria-expanded="false">
-                  Lines and arcs
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" id="mixed_designs" href="#">Lines and arcs</a></li>
-                  <li><a class="dropdown-item" id="more_lines" href="#">More lines</a></li>
-                  <li><a class="dropdown-item" id="more_arcs" href="#">More arcs</a></li>
-                  <li><a class="dropdown-item" id="only_lines" href="#">Only lines</a></li>
-                  <li><a class="dropdown-item" id="only_arcs" href="#">Only arcs</a></li>
-                </ul>
+              <button 
+              id="dropdownDesignButton"
+              class="btn btn-secondary dropdown-toggle" 
+              type="button" 
+              data-bs-toggle="dropdown" 
+              aria-expanded="false">
+              Lines and arcs
+              </button>
+              <ul class="dropdown-menu">
+              <li><a class="dropdown-item cl-selector" id="mixed_designs" href="#">Lines and arcs</a></li>
+              <li><a class="dropdown-item cl-selector" id="more_lines" href="#">More lines</a></li>
+              <li><a class="dropdown-item cl-selector" id="more_arcs" href="#">More arcs</a></li>
+              <li><a class="dropdown-item cl-selector" id="only_lines" href="#">Only lines</a></li>
+              <li><a class="dropdown-item cl-selector" id="only_arcs" href="#">Only arcs</a></li>
+              </ul>
               </div>
             </div>
-            <div class="col-auto">
+            <div class="col-auto d-none d-md-block">
               <div class="dropdown">
-                <button 
-                  id="dropdownDirectionButton"
-                  class="btn btn-secondary dropdown-toggle" 
-                  type="button" 
-                  data-bs-toggle="dropdown" 
-                  aria-expanded="false">
-                  Mixed directions
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" id="mixed_directions" href="#">Mixed directions</a></li>
-                  <li><a class="dropdown-item" id="horizontal" href="#">Only horizontal</a></li>
-                  <li><a class="dropdown-item" id="vertical" href="#">Only vertical</a></li>
-                </ul>
+              <button 
+              id="dropdownDirectionButton"
+              class="btn btn-secondary dropdown-toggle" 
+              type="button" 
+              data-bs-toggle="dropdown" 
+              aria-expanded="false">
+              Mixed directions
+              </button>
+              <ul class="dropdown-menu">
+              <li><a class="dropdown-item cl-selector" id="mixed_directions" href="#">Mixed directions</a></li>
+              <li><a class="dropdown-item cl-selector" id="horizontal" href="#">Only horizontal</a></li>
+              <li><a class="dropdown-item cl-selector" id="vertical" href="#">Only vertical</a></li>
+              </ul>
+              </div>
+            </div>
+            <!-- Accordion for tablet and mobile views -->
+            <div class="accordion d-md-none w-100 mb-3" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingColors">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseColors" aria-expanded="true" aria-controls="collapseColors">
+                    Random colors
+                  </button>
+                </h2>
+                <div id="collapseColors" class="accordion-collapse collapse" aria-labelledby="headingColors" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled mb-0">
+                      <li><a class="list-group-item mb-3 cl-selector" id="random" href="#">Random colors</a></li>
+                      <li><a class="list-group-item mb-3 cl-selector" id="green" href="#">Green field</a></li>
+                      <li><a class="list-group-item cl-selector" id="mordor" href="#">Sauron</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingDesign">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDesign" aria-expanded="false" aria-controls="collapseDesign">
+                    Lines and arcs
+                  </button>
+                </h2>
+                <div id="collapseDesign" class="accordion-collapse collapse" aria-labelledby="headingDesign" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled mb-0">
+                      <li><a class="list-group-item mb-3 cl-selector" id="mixed_designs" href="#">Lines and arcs</a></li>
+                      <li><a class="list-group-item mb-3 cl-selector" id="more_lines" href="#">More lines</a></li>
+                      <li><a class="list-group-item mb-3 cl-selector" id="more_arcs" href="#">More arcs</a></li>
+                      <li><a class="list-group-item mb-3 cl-selector" id="only_lines" href="#">Only lines</a></li>
+                      <li><a class="list-group-item cl-selector" id="only_arcs" href="#">Only arcs</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingDirection">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDirection" aria-expanded="false" aria-controls="collapseDirection">
+                    Mixed directions
+                  </button>
+                </h2>
+                <div id="collapseDirection" class="accordion-collapse collapse" aria-labelledby="headingDirection" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled mb-0">
+                      <li><a class="list-group-item mb-3 cl-selector" id="mixed_directions" href="#">Mixed directions</a></li>
+                      <li><a class="list-group-item mb-3 cl-selector" id="horizontal" href="#">Only horizontal</a></li>
+                      <li><a class="list-group-item cl-selector" id="vertical" href="#">Only vertical</a></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-auto">
@@ -87,7 +140,7 @@
                 I'm feeling lucky
               </button>
             </div>
-          </div>
+            </div>
         </div>
       </div>
     </div>

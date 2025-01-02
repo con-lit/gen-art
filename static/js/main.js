@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
       image.src = `/bitmap?width=${width}&height=${height}${designParam}${directionParam}${colorsnParam}${cacheBust}`;
     }
   
-    document.querySelectorAll('.dropdown-item').forEach(item => {
+    document.querySelectorAll('.cl-selector').forEach(item => {
       item.addEventListener('click', e => {
         e.preventDefault();
         if (colors.includes(item.id)) {
