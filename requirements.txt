@@ -1,3 +1,4 @@
+whitenoise
 hypercorn
 django
 psycopg2-binary
