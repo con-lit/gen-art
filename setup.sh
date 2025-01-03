@@ -6,6 +6,9 @@ python manage.py migrate
 # Create superuser if it does not exist
 python manage.py create_superuser
 
+# Collect static files
+python manage.py collectstatic
+
 # Check if the environment is production
 if [ "$DJANGO_ENV" = "production" ]; then
     # Start Hypercorn in production
