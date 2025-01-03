@@ -42,6 +42,7 @@ jobs:
             DJANGO_SUPERUSER_PASSWORD=${{ secrets.DJANGO_SUPERUSER_PASSWORD }}
             DJANGO_ENV=production
           script: |
+            cd /home/consta
             docker compose pull
             docker compose down
             docker compose up -d
