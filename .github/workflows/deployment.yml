@@ -1,0 +1,30 @@
+name: Build & Deploy to Server
+
+on:
+  push:
+    branches:
+      - release/prod
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Copy files via SSH
+      run: scp -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/deployment
+
+    - name: Deploy with Docker Compose
+      run: |
+        ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+          cd /deployment
+          docker compose down
+          docker compose up -d --build
+        EOF
