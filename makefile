@@ -14,4 +14,4 @@ restart: stop run
 
 # Clean up: Stop and remove the container, then remove the image
 clean:
-	docker compose down --rmi all --volumes
+	docker compose down --rmi all

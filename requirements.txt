@@ -1,3 +1,4 @@
+hypercorn
 django
 psycopg2-binary
 pillow

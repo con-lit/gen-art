@@ -17,3 +17,5 @@ media/
 # Django cache files
 *.cache
 .cache/
+
+.env
