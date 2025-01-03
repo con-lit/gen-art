@@ -23,6 +23,10 @@ jobs:
         mkdir -p ~/.ssh
         ssh-keyscan ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
+    - name: Create deployment directory
+      run: |
+        ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "sudo mkdir -p /deployment && sudo chown ${{ secrets.SERVER_USER }}:${{ secrets.SERVER_USER }} /deployment"
+  
     - name: Copy files via SSH
       run: scp -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/deployment
 
