@@ -7,7 +7,7 @@ python manage.py migrate
 python manage.py create_superuser
 
 # Collect static files
-python manage.py collectstatic
+python manage.py collectstatic --noinput
 
 # Check if the environment is production
 if [ "$DJANGO_ENV" = "production" ]; then
