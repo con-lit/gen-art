@@ -28,6 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['consta.de', 'www.consta.de']
 
+# Trusted origins for CSRF protection
+CSRF_TRUSTED_ORIGINS = [
+    'https://consta.de',
+    'https://www.consta.de',
+]
 
 # Application definition
 
