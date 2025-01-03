@@ -18,6 +18,11 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+    - name: Add server to known hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
     - name: Copy files via SSH
       run: scp -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/deployment
 
@@ -25,6 +30,9 @@ jobs:
       run: |
         ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
           cd /deployment
+          export DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }}
+          export DJANGO_SUPERUSER_PASSWORD=${{ secrets.DJANGO_SUPERUSER_PASSWORD }}
+          export DJANGO_ENV=production
           docker compose down
           docker compose up -d --build
         EOF
