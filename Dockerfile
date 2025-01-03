@@ -13,7 +13,7 @@ COPY ./app /code/app
 
 # Install Python dependencies
 RUN pip install --upgrade pip && \
-    pip install -r --root-user-action /code/requirements.txt
+    pip install -r /code/requirements.txt
 
 # Install local package
 # RUN pip install -e ./stolpersteine_data_import
