@@ -8,7 +8,7 @@ module.exports = {
   },
   output: {
     path: path.resolve('./showroom/static/showroom/'),
-    filename: '[name]-[hash].js',
+    filename: '[name]-[fullhash].js',
     publicPath: 'static/showroom/',
   },
   plugins: [
@@ -30,5 +30,8 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
     ],
+  },
+  optimization: {
+    usedExports: true,
   },
 }

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-tpd7zm1=@#!k5wp#9j9&mrpb1#ig34=)!5d=gd(0jc3ux9*8r1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_ENV', 'development') == 'development'
 
 ALLOWED_HOSTS = ['consta.de', 'www.consta.de', 'localhost']
 

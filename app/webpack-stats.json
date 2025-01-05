@@ -1,20 +1,20 @@
 {
   "status": "done",
   "assets": {
-    "frontend-6e41f7d6be26f639c820.js": {
-      "name": "frontend-6e41f7d6be26f639c820.js",
-      "path": "/Users/consta/dev/generative_art/gen-art/app/showroom/static/showroom/frontend-6e41f7d6be26f639c820.js",
-      "publicPath": "static/showroom/frontend-6e41f7d6be26f639c820.js"
+    "frontend-65a8c3fdc539d17ab75e.js": {
+      "name": "frontend-65a8c3fdc539d17ab75e.js",
+      "path": "/Users/consta/dev/generative_art/gen-art/app/showroom/static/showroom/frontend-65a8c3fdc539d17ab75e.js",
+      "publicPath": "static/showroom/frontend-65a8c3fdc539d17ab75e.js"
     },
-    "frontend-6e41f7d6be26f639c820.js.LICENSE.txt": {
-      "name": "frontend-6e41f7d6be26f639c820.js.LICENSE.txt",
-      "path": "/Users/consta/dev/generative_art/gen-art/app/showroom/static/showroom/frontend-6e41f7d6be26f639c820.js.LICENSE.txt",
-      "publicPath": "static/showroom/frontend-6e41f7d6be26f639c820.js.LICENSE.txt"
+    "frontend-65a8c3fdc539d17ab75e.js.LICENSE.txt": {
+      "name": "frontend-65a8c3fdc539d17ab75e.js.LICENSE.txt",
+      "path": "/Users/consta/dev/generative_art/gen-art/app/showroom/static/showroom/frontend-65a8c3fdc539d17ab75e.js.LICENSE.txt",
+      "publicPath": "static/showroom/frontend-65a8c3fdc539d17ab75e.js.LICENSE.txt"
     }
   },
   "chunks": {
     "frontend": [
-      "frontend-6e41f7d6be26f639c820.js"
+      "frontend-65a8c3fdc539d17ab75e.js"
     ]
   },
   "publicPath": "static/showroom/"
