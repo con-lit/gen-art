@@ -1,5 +1,6 @@
 # Build the Docker image
 build:
+	npm run build --prefix app
 	docker compose up --build -d
 
 # Stop the Docker container
