@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'consta.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -76,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'consta.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'consta.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        "NAME": "consta_web",
-        "USER": "consta",
-        "PASSWORD": "mysuperpassword",
+        "NAME": os.getenv("POSTGRES_DB", "consta"),
+        "USER": os.getenv("POSTGRES_USER", "consta"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "consta"),
         "HOST": "db",
         "PORT": "5432",
     }

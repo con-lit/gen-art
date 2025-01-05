@@ -2,9 +2,9 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_USER: consta
-      POSTGRES_PASSWORD: mysuperpassword
-      POSTGRES_DB: consta_web
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - db-data:/var/lib/postgresql/data
     user: postgres
@@ -23,6 +23,9 @@ services:
       DJANGO_SUPERUSER_EMAIL: ${DJANGO_SUPERUSER_EMAIL}
       DJANGO_SUPERUSER_PASSWORD: ${DJANGO_SUPERUSER_PASSWORD}
       DJANGO_ENV: ${DJANGO_ENV}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - ./app:/code/app 
       - ./pattern_generator:/code/pattern_generator
