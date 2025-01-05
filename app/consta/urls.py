@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path("", include("showroom.urls")),
     path('admin/', admin.site.urls),
+    path('mk/', include('theme_material_kit.urls')),
 ]

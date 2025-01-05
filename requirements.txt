@@ -1,6 +1,7 @@
 whitenoise
 hypercorn
 django
+django-theme-material-kit
 psycopg2-binary
 pillow
 svgwrite
